@@ -8,3 +8,5 @@ docker build -t pyradiomics .
 docker run -it --rm -v ~/dicomPhantomScans:/home/jovyan/data/newData -v ~/dockerbuild/qa4iqi:/home/jovyan/qa4iqi pyradiomics python runPipeline.py
 
 * The output pyRadiomics features will be stored in the mounted volume ~/dockerbuild/qa4iqi, in the directory 'out_radiomics/' as a .csv file.
+
+The QA4IQI reference data can be found here: https://www.dropbox.com/s/yf5cqprkyuxwcwv/refData.zip?dl=0
