@@ -2,16 +2,16 @@
 
 ## Code for QA4IQI Radiomics Feature Extraction
 
-1. To build this container from source, navigate to this directory and run:
+1. (OPTIONAL) To build this container from source, navigate to this directory and run:
 
    ```
-   docker build -t qa4iqi-extraction:latest .
+   docker build -t medgift/qa4iqi-extraction:latest .
    ```
 
-2. Run a container using the created image
+2. Run a container using the **medgift/qa4iqi-extraction** image (built locally or pulled from Docker Hub directly)
 
    ```
-   docker run -it --rm -v <PATH_TO_DATASET_FOLDER>:/data/ct-phantom4radiomics -v <PATH_TO_OUTPUT_FOLDER>:/data/output qa4iqi-extraction:latest
+   docker run -it --rm -v <PATH_TO_DATASET_FOLDER>:/data/ct-phantom4radiomics -v <PATH_TO_OUTPUT_FOLDER>:/data/output medgift/qa4iqi-extraction:latest
    ```
 
    Where:
