@@ -1,13 +1,28 @@
-# Build the Python app
-FROM radiomics/pyradiomics
-MAINTAINER Oscar Jimenez
+FROM python:3.10
 
-# Set environment variables
-USER jovyan
+# Define working directory
+WORKDIR /usr/src/app
 
-# QA4IQI code
-COPY qa4iqi/code/ ./
+# Copy pyradiomics parameters
+COPY params/qa4iqi_params.yml /data/params/qa4iqi_params.yml
 
-RUN pip install -r requirements.txt
+# Copy requirements
+COPY requirements.txt /requirements.txt
 
-EXPOSE 80
+# Upgrade pip
+RUN pip install --upgrade pip
+
+# Install numpy first (required for pyradiomics)
+RUN pip install numpy
+
+# Install requirements
+RUN pip install -r /requirements.txt
+
+# Copy source code
+COPY qa4iqi_extraction/ qa4iqi_extraction/
+
+# Define default environment variables for log level etc.
+RUN echo "LOG_LEVEL=ERROR" > .env
+
+# Run feature extraction by default
+CMD ["python", "-m", "qa4iqi_extraction.main"]
