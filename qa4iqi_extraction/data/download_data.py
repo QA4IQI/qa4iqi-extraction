@@ -17,7 +17,7 @@ def offer_download_data(series, dataset_folder):
         inquirer.Confirm(
             "download",
             message=(
-                f"Dataset is non-existent or incomplete, would you like to"
+                f"Dataset is non-existent or incomplete, would you like to "
                 f"download it? The total size of the dataset is {data_size_gb:.2f}GB"
             ),
             default=True,
